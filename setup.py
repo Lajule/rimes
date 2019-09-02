@@ -1,47 +1,34 @@
 from setuptools import setup, find_packages
+import howdoi
 
 
-descr = """
+DESCR = """
 rimes
 ======
 
 """
 
-DISTNAME = "rimes"
-VERSION = "1.0.0"
-DESCRIPTION = "A simple tool for poets"
-LONG_DESCRIPTION = descr
-MAINTAINER = "Julien Rouzieres"
-MAINTAINER_EMAIL = "julien.rouzieres@mac.com"
-URL = "https://github.com/Lajule/rimes"
-DOWNLOAD_URL = "https://github.com/Lajule/rimes/archive/master.zip"
-PROJECT_URLS = {
-    "Bug Tracker": "https://github.com/Lajule/rimes/issues",
-    "Documentation": "https://github.com/Lajule/rimes",
-    "Source Code": "https://github.com/Lajule/rimes",
-}
-
 
 def parse_requirements_file(filename):
-    with open(filename) as fid:
-        requires = [l.strip() for l in fid.readlines() if l]
-
+    with open(filename) as fd:
+        requires = [l.strip() for l in fd.readlines() if l]
     return requires
 
 
-REQUIRES = parse_requirements_file("requirements.txt")
-EXTRA_REQUIRES = {"docs": parse_requirements_file("doc/requirements.txt")}
-
 setup(
-    name=DISTNAME,
-    description=DESCRIPTION,
-    long_description=LONG_DESCRIPTION,
-    maintainer=MAINTAINER,
-    maintainer_email=MAINTAINER_EMAIL,
-    url=URL,
-    download_url=DOWNLOAD_URL,
-    project_urls=PROJECT_URLS,
-    version=VERSION,
+    name="rimes",
+    version=rimes.__version__,
+    description="A simple tool for poets",
+    long_description=DESCR,
+    maintainer="Julien Rouzieres",
+    maintainer_email="julien.rouzieres@mac.com",
+    url="https://github.com/Lajule/rimes",
+    download_url="https://github.com/Lajule/rimes/archive/master.zip",
+    project_urls={
+        "Bug Tracker": "https://github.com/Lajule/rimes/issues",
+        "Documentation": "https://github.com/Lajule/rimes",
+        "Source Code": "https://github.com/Lajule/rimes",
+    },
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Environment :: Console",
@@ -60,10 +47,10 @@ setup(
         "Operating System :: Unix",
         "Operating System :: MacOS",
     ],
-    install_requires=REQUIRES,
-    extras_require=EXTRA_REQUIRES,
+    install_requires=parse_requirements_file("requirements.txt"),
     python_requires=">=3.5",
     zip_safe=False,
     package_data={"": ["data/*"]},
-    packages=find_packages(exclude=["test", "doc"]),
+    packages=find_packages(),
+    entry_points={"console_scripts": ["howdoi = rimes.rimes:runner"]},
 )
