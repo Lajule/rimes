@@ -19,16 +19,19 @@ def runner():
     parser = arg_parser()
     args = vars(parser.parse_args())
 
-    endings = [re.compile(f"{ending}$") for ending in args["ending"]]
-    print(endings)
+    endings = [re.compile(f"{ending}$", re.IGNORECASE) for ending in args["ending"]]
 
-    # unicodedata.normalize('NFKD', data).encode('ASCII', 'ignore')
+    print(list(filter(lambda exp: exp.match("cacatot"), endings)))
 
-    # filename = pkg_resources.resource_filename(__name__, "data/fr")
+    filename = pkg_resources.resource_filename(__name__, "data/fr")
+    with open(filename) as fd:
+        words = [
+            word.strip()
+            for word in fd.readlines()
+            if len(list(filter(lambda exp: exp.match(exp, word.strip()), endings))) > 0
+        ]
 
-    # with open(filename) as fd:
-    # words = [word.strip() for word in fd.readlines() if word]
-    # print(words)
+    print(words)
 
 
 if __name__ == "__main__":
