@@ -1,5 +1,5 @@
 from setuptools import setup, find_packages
-import howdoi
+import rimes
 
 
 DESCR = """
@@ -52,5 +52,5 @@ setup(
     zip_safe=False,
     package_data={"": ["data/*"]},
     packages=find_packages(),
-    entry_points={"console_scripts": ["howdoi = rimes.rimes:runner"]},
+    entry_points={"console_scripts": ["rimes = rimes.rimes:runner"]},
 )
