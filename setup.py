@@ -64,6 +64,6 @@ setup(
     extras_require=EXTRA_REQUIRES,
     python_requires=">=3.5",
     zip_safe=False,
-    package_data={"": ["data/*/*.png"]},
+    package_data={"": ["data/*"]},
     packages=find_packages(exclude=["test", "doc"]),
 )
