@@ -1,17 +1,19 @@
 #!/usr/bin/env python
 
 import argparse
-from colorama import init, Fore, Style
 from pkg_resources import resource_filename, resource_listdir
+import pprint
 import random
 import os
 
 
 def arg_parser():
     parser = argparse.ArgumentParser(description="A simple tool for poets")
-
     parser.add_argument(
         "ending", metavar="ENDING", type=str, nargs="+", help="end of the word"
+    )
+    parser.add_argument(
+        "-c", "--compact", action="store_true", help="display compacted words"
     )
     parser.add_argument(
         "-l",
@@ -26,18 +28,10 @@ def arg_parser():
     return parser
 
 
-def colored(word, ending):
-    return word[: -len(ending)] + Fore.BLUE + ending + Style.RESET_ALL
-
-
 def runner():
-    init()
-
+    words = []
     parser = arg_parser()
     args = parser.parse_args()
-
-    words = []
-
     filename = resource_filename(__name__, os.path.join("data", args.lang))
     with open(filename) as reader:
         for line in reader:
@@ -45,16 +39,17 @@ def runner():
             for arg in args.ending:
                 ending = arg.lower()
                 if word.endswith(ending):
-                    words.append(colored(word, ending))
+                    words.append(word)
                     break
 
     if words:
-        if args.rand is not None:
-            if len(words) > args.rand:
-                words = random.sample(words, args.rand)
-
-        str = " ".join(words)
-        print(str)
+        columns, rows = os.get_terminal_size()
+        pp = pprint.PrettyPrinter(width=columns, compact=args.compact)
+        pp.pprint(
+            random.sample(words, args.rand)
+            if args.rand is not None and len(words) > args.rand
+            else words
+        )
 
 
 if __name__ == "__main__":
