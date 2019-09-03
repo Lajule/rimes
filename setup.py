@@ -12,6 +12,7 @@ rimes
 def parse_requirements_file(filename):
     with open(filename) as fd:
         requires = [l.strip() for l in fd.readlines() if l]
+
     return requires
 
 

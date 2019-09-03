@@ -26,6 +26,10 @@ def arg_parser():
     return parser
 
 
+def colored(word, ending):
+    return word[: -len(ending)] + Fore.BLUE + ending + Style.RESET_ALL
+
+
 def runner():
     init()
 
@@ -41,9 +45,7 @@ def runner():
             for arg in args.ending:
                 ending = arg.lower()
                 if word.endswith(ending):
-                    words.append(
-                        word[: -len(ending)] + Fore.BLUE + ending + Style.RESET_ALL
-                    )
+                    words.append(colored(word, ending))
                     break
 
     if words:
@@ -51,8 +53,8 @@ def runner():
             if len(words) > args.rand:
                 words = random.sample(words, args.rand)
 
-        print(" ".join(words))
-
+        str = " ".join(words)
+        print(str)
 
 
 if __name__ == "__main__":
