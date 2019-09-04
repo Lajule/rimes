@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 
 import argparse
+import os
 from pkg_resources import resource_filename, resource_listdir
 import pprint
 import random
-import os
+import shutil
 
 
 def arg_parser():
@@ -45,7 +46,7 @@ def runner():
                     break
 
     if words:
-        columns, _ = os.get_terminal_size(0)
+        columns, _ = shutil.get_terminal_size()
         pp = pprint.PrettyPrinter(width=columns, compact=args.compact)
         pp.pprint(
             random.sample(words, args.rand)
