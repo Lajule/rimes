@@ -31,6 +31,6 @@ optional arguments:
 ## Example
 
 ```sh
-rimes --n c tôt
-aussitôt        bientôt couche-tôt      fistot  hottentot       laptot  paletot plutôt  sitôt   tantôt  tôt
+rimes -n -c -r 5 tot tôt
+laptot  bientôt plutôt  hottentot       tôt
 ```
