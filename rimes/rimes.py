@@ -9,6 +9,7 @@ import os
 
 def arg_parser():
     parser = argparse.ArgumentParser(description="A simple tool for poets")
+
     parser.add_argument(
         "ending", metavar="ENDING", type=str, nargs="+", help="end of the word"
     )
@@ -29,9 +30,10 @@ def arg_parser():
 
 
 def runner():
-    words = []
     parser = arg_parser()
     args = parser.parse_args()
+
+    words = []
     filename = resource_filename(__name__, os.path.join("data", args.lang))
     with open(filename) as reader:
         for line in reader:
