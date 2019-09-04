@@ -34,3 +34,11 @@ optional arguments:
 rimes -n -c -r 5 tot tôt
 laptot  bientôt plutôt  hottentot       tôt
 ```
+
+## Languages
+
+To support other languages, simply add language file to `data` package directory, for example try:
+
+```sh
+curl -o rimes/data/en https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt
+```
