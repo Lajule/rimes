@@ -43,7 +43,7 @@ def runner():
                     break
 
     if words:
-        columns, rows = os.get_terminal_size()
+        columns, _ = os.get_terminal_size()
         pp = pprint.PrettyPrinter(width=columns, compact=args.compact)
         pp.pprint(
             random.sample(words, args.rand)
