@@ -8,14 +8,14 @@ import random
 
 
 def arg_parser():
+    languages = resource_listdir(__name__, "data")
+
     parser = argparse.ArgumentParser(description="A simple tool for poets")
 
     parser.add_argument("ending", metavar="ENDING", type=str, nargs="+", help="end of the word")
     parser.add_argument("-c", "--compact", action="store_true", help="display compacted words")
     parser.add_argument("-n", "--no-color", action="store_false", help="display uncolored words")
-    parser.add_argument(
-        "-l", "--lang", type=str, choices=resource_listdir(__name__, "data"), default="fr", help="used language"
-    )
+    parser.add_argument("-l", "--lang", type=str, choices=languages, default="fr", help="used language")
     parser.add_argument("-r", "--rand", type=int, help="pick random words")
 
     return parser
