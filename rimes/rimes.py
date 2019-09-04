@@ -47,12 +47,14 @@ def runner():
 
     if words:
         columns, _ = shutil.get_terminal_size()
-        pp = pprint.PrettyPrinter(width=columns, compact=args.compact)
-        pp.pprint(
+        output = pprint.pformat(
             random.sample(words, args.rand)
             if args.rand is not None and len(words) > args.rand
-            else words
+            else words,
+            width=columns,
+            compact=args.compact,
         )
+        print(output)
 
 
 if __name__ == "__main__":
