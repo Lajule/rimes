@@ -2,7 +2,7 @@
 
 A Python command line tool to help you to find the right rhyme.
 
-## Install
+## Installation
 
 ```sh
 pip install https://github.com/Lajule/rimes/archive/master.zip
@@ -10,9 +10,10 @@ pip install https://github.com/Lajule/rimes/archive/master.zip
 
 ## Usage
 
-```sh
-rimes -h
-usage: rimes [-h] [-c] [-l {fr}] [-r RAND] ENDING [ENDING ...]
+Type the following command `rimes -h` to display this help message:
+
+```
+usage: rimes.py [-h] [-c] [-n] [-l {fr}] [-r RAND] ENDING [ENDING ...]
 
 A simple tool for poets
 
@@ -22,6 +23,14 @@ positional arguments:
 optional arguments:
   -h, --help            show this help message and exit
   -c, --compact         display compacted words
+  -n, --no-color        display uncolored words
   -l {fr}, --lang {fr}  used language
   -r RAND, --rand RAND  pick random words
+```
+
+## Example
+
+```sh
+rimes --n c tôt
+aussitôt        bientôt couche-tôt      fistot  hottentot       laptot  paletot plutôt  sitôt   tantôt  tôt
 ```
