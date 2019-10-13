@@ -10,22 +10,19 @@ pip install https://github.com/Lajule/rimes/archive/master.zip
 
 ## Usage
 
-Type the following command `rimes -h` to display this help message:
+Type the following command `rimes --help` to display this help message:
 
 ```
-usage: rimes.py [-h] [-c] [-n] [-l {fr}] [-r RAND] ENDING [ENDING ...]
+Usage: rimes.py [OPTIONS] [ENDINGS]...
 
-A simple tool for poets
+  A simple tool for poets.
 
-positional arguments:
-  ENDING                end of the word
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -c, --compact         display compacted words
-  -n, --no-color        display uncolored words
-  -l {fr}, --lang {fr}  used language
-  -r RAND, --rand RAND  pick random words
+Options:
+  -c, --compact       display compacted words
+  -n, --no-color      display uncolored words
+  -r, --rand INTEGER  pick random words
+  -l, --lang [fr]     used language
+  --help              Show this message and exit.
 ```
 
 ## Example
